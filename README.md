@@ -45,7 +45,7 @@ The following **additional** features are implemented:
 
 Here's a walkthrough of implemented user stories:
 
-![https://github.com/norellic/flashcards_dynamic/blob/main/Moths%20of%20North%20Carolina%20GIF%20demo.gif] (https://github.com/norellic/flashcards_dynamic/blob/main/Moths%20of%20North%20Carolina%20GIF%20demo.gif)
+![https://github.com/norellic/flashcards_dynamic/blob/main/Moths%20of%20North%20Carolina%20GIF%20demo.gif.gif] (https://github.com/norellic/flashcards_dynamic/blob/main/Moths%20of%20North%20Carolina%20GIF%20demo.gif.gif)
 <!-- Replace this with whatever GIF tool you used! -->
 GIF created with ...  
 <!-- Recommended tools:
