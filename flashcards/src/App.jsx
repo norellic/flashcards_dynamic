@@ -63,9 +63,22 @@ function App() {
     newCardProcedure(shuffled, 0);
   };
 
-  const removeCard = () => {
-    
-  }
+  // const removeCard = () => {
+
+  //<button classname="masteredButton">⭐</button>
+
+  //   const updatedCards = [...cardOrder];
+  //   updatedCards.splice(index, 1); // Remove current card
+  //   if (updatedCards.length === 0) {
+  //     alert("You mastered all cards!");
+  //     return;
+  //   }
+  
+  //   const newIndex = index >= updatedCards.length ? updatedCards.length - 1 : index;
+  //   setCardOrder(updatedCards);
+  //   setIndex(newIndex);
+  //   newCardProcedure(updatedCards, newIndex);
+  // };
   
   return (
     <>
@@ -79,7 +92,6 @@ function App() {
         onClick={flipCard}
       >
         <div className={"card-face front " + currentCard.color}>
-        <button classname="masteredButton" onClick>⭐</button>
           {currentCard.side1}
           <img src={currentCard.image}/>
         </div>
