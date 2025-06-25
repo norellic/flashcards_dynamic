@@ -62,6 +62,10 @@ function App() {
     setIndex(0);
     newCardProcedure(shuffled, 0);
   };
+
+  const removeCard = () => {
+    
+  }
   
   return (
     <>
@@ -75,6 +79,7 @@ function App() {
         onClick={flipCard}
       >
         <div className={"card-face front " + currentCard.color}>
+        <button classname="masteredButton" onClick>⭐</button>
           {currentCard.side1}
           <img src={currentCard.image}/>
         </div>
