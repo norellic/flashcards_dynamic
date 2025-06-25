@@ -111,6 +111,7 @@ img {
   transition-property: transform, background-color;
   transition-duration: 0.5s;
   transition-timing-function: ease-in-out;
+  margin-top: 15px;
 }
 #nextButton:hover {
   transform: translateX(15px);
