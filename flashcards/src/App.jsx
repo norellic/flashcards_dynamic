@@ -5,11 +5,15 @@ import InputGuess from './components/InputGuess';
 
 function App() {
 
+  const [cardOrder, setCardOrder] = useState([...cardData]);
   const[index, setIndex] = useState(0);
-  let currentCard = cardData[index];
+  let currentCard = cardOrder[index];
   let numOfCards = cardData.length;
+
   const [isFlipped, setIsFlipped] = useState(false);
   const [cardValue, setCardValue] = useState(currentCard.side1);
+  const [prevActive, setprevActive] = useState("false");
+  const [nextActive, setNextActive] = useState("true");
 
   const [input, setInput] = useState(''); //this is for InputGuess, lift state up
 
@@ -22,28 +26,43 @@ function App() {
     setIsFlipped(prevIsFlipped => !prevIsFlipped);
   };
 
-  //chooses a new random index to display next
-  const chooseNextCard = (max, prevIndex) => {
-    if (max <= 1) {
-      return 0; // Only one card, so return its index
+  const prevCard = () => {
+    if (index > 0) {
+      setIndex(index - 1);
+      newCardProcedure();
+      setNextActive("true");
     }
-    let newIndex = Math.floor(Math.random() * max);
-    while (newIndex === prevIndex) {
-      newIndex = Math.floor(Math.random() * max);
+    else {
+      setprevActive("false");
     }
-    prevIndex = newIndex;
-    return newIndex
   }
-  
+
+  const nextCard = () => {
+    if (index < numOfCards - 1) {
+      setIndex(index + 1);
+      newCardProcedure();
+      setprevActive("true");
+  }
+  else {
+    setNextActive("false");
+  }
+}
+
   //combine choosing new index and refreshing display with said index
-  const newCardProcedure = () => {
-    let newIndex = chooseNextCard(numOfCards, index);
-    setIndex(newIndex);
-    setCardValue(cardData[newIndex].side1);
-    setIsFlipped(false); // Reset flip state for the new card
+  const newCardProcedure = (order = cardOrder, newIndex = index) => {
+    setCardValue(order[newIndex].side1);
+    setIsFlipped(false);
     setInput('');
   }
 
+  const shuffleCards = () => {
+    const shuffled = [...cardData].sort(() => Math.random() - 0.5);
+    //alert("Shuffled order:\n" + shuffled.map(obj => obj.side2).join('\n'));
+    setCardOrder(shuffled);
+    setIndex(0);
+    newCardProcedure(shuffled, 0);
+  };
+  
   return (
     <>
       <h1 className="glow">Moths of North Carolina</h1>
@@ -71,10 +90,15 @@ function App() {
     input={input}//passing this state variable down to input
     onChange={(e) => setInput(e.target.value)} //passing setter func so it can control state of inherited variable
     />) : null}
+    <div className="changeCardButtonContainer">
+    <button className={"changeCardButton prev " + prevActive} onClick={prevCard}>Prev</button>
 
-    <button id="nextButton" onClick={newCardProcedure}>Next</button>
+    <button className="changeCardButton shuffle" onClick={shuffleCards}>Shuffle</button>
+
+    <button className={"changeCardButton next " + nextActive} onClick={nextCard}>Next</button>
+    </div>
     </>
   )
 }
 
-export default App
+export default App;

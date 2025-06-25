@@ -105,15 +105,39 @@ img {
   background-color: rgb(129, 255, 129);;
 }
 
-#nextButton {
-  width: 10%;
+.changeCardButtonContainer {
+  display: flex;
+  justify-content: center;
+  width: 45%;
+  margin: 10px auto;
+}
+
+.changeCardButton {
+  width: 30%;
   transform: translateX(0);
   transition-property: transform, background-color;
   transition-duration: 0.5s;
   transition-timing-function: ease-in-out;
-  margin-top: 15px;
+  margin-top: 1px;
+  margin: auto;
 }
-#nextButton:hover {
+
+.changeCardButton.prev:hover {
+  transform: translateX(-15px);
+  background-color: greenyellow; 
+}
+.changeCardButton.shuffle:hover {
+  transform: translateY(15px);
+  background-color: greenyellow; 
+}
+.changeCardButton.next:hover {
   transform: translateX(15px);
   background-color: greenyellow; 
+}
+
+.false {
+  background-color: #ccc; /* Light grey background */
+  color: #666; /* Darker grey text */
+  cursor: not-allowed; /* Indicate it's not clickable */
+  opacity: 0.7; /* Slightly dim it */
 }
